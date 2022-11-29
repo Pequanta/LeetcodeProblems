@@ -1,0 +1,9 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        lst = []
+        for i in range(len(nums)):
+            if nums[i] == val:
+                lst.append(i)
+        for j in range(len(lst)):
+            nums.remove(val)
+        return len(nums)
