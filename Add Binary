@@ -1,0 +1,22 @@
+class Solution:
+    def to_decimal(self,n):
+        num_t = 0
+        count = 0
+        for i in range(len(n)-1, -1, -1):
+            num_t += int(n[i]) * (2**count)
+            count += 1
+        return num_t
+    def to_binary(self,m):
+        bin_cont = ""
+        while m != 0:
+            rem = m % 2
+            bin_cont = str(rem) + bin_cont
+            m //= 2
+        if bin_cont != "":
+            return bin_cont
+        return "0"
+    def addBinary(self,a: str, b: str) -> str:
+        num1 = self.to_decimal(a)
+        num2 = self.to_decimal(b)
+        sum_n = num1 + num2
+        return self.to_binary(sum_n) 
