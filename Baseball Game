@@ -1,0 +1,40 @@
+class Stack:
+    def __init__(self):
+        self.__score = []
+    def push(self, item):
+        self.__score.append(item)
+    def pop(self):
+        self.__score.pop()
+    def top(self):
+        return self.__score[-1]
+    def empty(self):
+        len(self.__score) == 0
+    def ret_st(self):
+        return self.__score
+    
+class Solution:
+    def check_int(self, num):
+        try:
+            n = int(num)
+            return True
+        except:
+            return False
+    def calPoints(self, operations: List[str]) -> int:
+        stack = Stack()
+        sum_n = 0
+        for mem in operations:
+            if self.check_int(mem):
+                stack.push(mem)
+            elif mem == "C":
+                stack.pop()
+            elif mem == "D":
+                stack.push(int(stack.top()) * 2)
+            elif mem == "+":
+                sum = int(stack.ret_st()[-1]) + int(stack.ret_st()[-2])
+    
+                stack.push(sum)
+        for nums in stack.ret_st():
+            sum_n += int(nums)
+        return sum_n
+            
+        
