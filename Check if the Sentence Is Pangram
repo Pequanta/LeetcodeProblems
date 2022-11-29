@@ -1,0 +1,9 @@
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+        sent=  sentence.lower()
+        spells = "abcdefghijklmnopqrstuvwxyz"
+        for spell in spells:
+            if spell not in sent:
+                return False
+        return True
+                
